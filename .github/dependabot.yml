@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "terraform" 
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "20:00"
+      timezone: "Europe/London"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "22:00"
+      timezone: "Europe/London"
