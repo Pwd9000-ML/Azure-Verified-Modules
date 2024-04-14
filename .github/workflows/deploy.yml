@@ -15,7 +15,7 @@ jobs:
           test_type: plan-apply
           path: "."
           tf_version: latest
-          tf_vars_file: avm.auto.tfvars
+          tf_vars_file: default.auto.tfvars
           tf_key: global-azure-2024-avm
           az_resource_group: Terraform-GitHub-Backend
           az_storage_acc: tfgithubbackendsa
