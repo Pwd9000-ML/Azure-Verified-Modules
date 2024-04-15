@@ -57,13 +57,12 @@ module "storage_account" {
     network_interface_name          = "avm-demo-blob-pe-nic-${random_integer.number.result}"
     inherit_tags                    = false
     inherit_lock                    = false
-    tags                            = {}
-    role_assignments = {
-      role_assignment_1 = {
-        role_definition_id_or_name = "Owner"
-        principal_id               = data.azurerm_client_config.current.object_id
-      }
-    }
+    # role_assignments = {
+    #   role_assignment_1 = {
+    #     role_definition_id_or_name = "Owner"
+    #     principal_id               = data.azurerm_client_config.current.object_id
+    #   }
+    # }
   }
 
   # role assignments (optional)
