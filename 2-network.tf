@@ -25,18 +25,18 @@ module "vnet" {
 
 # Create Private DNS Zone for privatelink - Storage and keyvault (Add more to "For_each" if needed)
 resource "azurerm_private_dns_zone" "privatelink" {
-  for_each = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
+  for_each            = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
   name                = each.key
   resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "privatelink" {
-  for_each = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
-  name                = "vnetlink-${each.key}"
-  resource_group_name = azurerm_resource_group.rg.name
+  for_each              = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
+  name                  = "vnetlink-${each.key}"
+  resource_group_name   = azurerm_resource_group.rg.name
   private_dns_zone_name = azurerm_private_dns_zone.privatelink[each.key].name
-  virtual_network_id  = module.vnet.virtual_network_id
-  registration_enabled = false
+  virtual_network_id    = module.vnet.virtual_network_id
+  registration_enabled  = false
 }
 
 # module "private_dns_zones" {
