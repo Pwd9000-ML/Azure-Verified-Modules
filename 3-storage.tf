@@ -43,59 +43,34 @@ module "storage_account" {
 
   # private endpoints (optional)
   private_endpoints = {
-    name                          = "avm-demo-blob-pe-${random_integer.number.result}"
-    subnet_resource_id            = module.vnet.subnets["common"].id
-    subresource_name              = "blob"
-    private_dns_zone_resource_ids = [azurerm_private_dns_zone.privatelink["privatelink.blob.core.windows.net"].id]
+    for endpoint in local.endpoints :
+    endpoint => {
+      # the name must be set to avoid conflicting resources.
+      name                          = "avm-demo-blob-pe-${random_integer.number.result}"
+      subnet_resource_id            = module.vnet.subnets["common"].id
+      subresource_name              = [endpoint]
+      private_dns_zone_resource_ids = [azurerm_private_dns_zone.privatelink["privatelink.blob.core.windows.net"].id]
 
-    # these are optional but illustrate making well-aligned service connection & NIC names.
-    private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
+      # these are optional but illustrate making well-aligned service connection & NIC names.
+      private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
+      network_interface_name          = "avm-demo-blob-pe-nic-${random_integer.number.result}"
+      inherit_tags                    = false
+      inherit_lock                    = false
+      role_assignments = {
+        role_assignment_pe = {
+          role_definition_id_or_name = "Contributor"
+          principal_id               = data.azurerm_client_config.current.object_id
+        }
+      }
+    }
   }
 
   # role assignments (optional)
   role_assignments = {
-    role_assignment_1 = {
+    role_assignment_sa = {
       role_definition_id_or_name       = "Storage Blob Data Reader"
       principal_id                     = data.azurerm_client_config.current.object_id
       skip_service_principal_aad_check = false
     },
   }
 }
-
-# locals {
-#   endpoints = toset(["blob"])
-# }
-
-# for endpoint in local.endpoints :
-#     endpoint => {xxxxx}
-
-#  private_endpoints = {
-#     for endpoint in local.endpoints :
-#     endpoint => {
-#       # the name must be set to avoid conflicting resources.
-#       name                          = "pe-${endpoint}-${module.naming.storage_account.name_unique}"
-#       subnet_resource_id            = azurerm_subnet.private.id
-#       subresource_name              = [endpoint]
-#       private_dns_zone_resource_ids = [azurerm_private_dns_zone.this[endpoint].id]
-#       # these are optional but illustrate making well-aligned service connection & NIC names.
-#       private_service_connection_name = "psc-${endpoint}-${module.naming.storage_account.name_unique}"
-#       network_interface_name          = "nic-pe-${endpoint}-${module.naming.storage_account.name_unique}"
-#       inherit_tags                    = false
-#       inherit_lock                    = false
-
-#       tags = {
-#         env   = "Prod"
-#         owner = "Matt "
-#         dept  = "IT"
-#       }
-
-#       role_assignments = {
-#         role_assignment_1 = {
-#           role_definition_id_or_name = data.azurerm_role_definition.example.id
-#           principal_id               = data.azurerm_client_config.current.object_id
-#         }
-#       }
-#     }
-
-
-#   }
