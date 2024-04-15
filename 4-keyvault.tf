@@ -11,6 +11,7 @@ module "keyvault" {
   name                          = "avm-demo-kv-${random_integer.number.result}"
   enable_telemetry              = true
   location                      = "uksouth"
+  sku_name                      = "standard"
   resource_group_name           = azurerm_resource_group.rg.name
   tenant_id                     = data.azurerm_client_config.current.tenant_id
   public_network_access_enabled = false
