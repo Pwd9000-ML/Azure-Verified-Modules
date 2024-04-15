@@ -2,7 +2,7 @@
 
 Microsoft Azure Verified Modules (AVM) are a curated set of infrastructure-as-code (IaC) modules that are compliant with the Azure Well-Architected Framework and have been tested and verified by Microsoft. These modules are designed to help you build secure, scalable, and resilient cloud environments on Azure.  
 
-This repository contains the source code for the Azure Verified Modules (AVM) that are available in the Terraform Registry as part of a demo @ [Global Azure 2024](https://globalazure.net/)  
+This repository contains the source code for the Azure Verified Modules (AVM) that are available in the Terraform Registry as part of a demo at this years [Global Azure 2024](https://globalazure.net/)  
 
 Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
 Blog Post (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
@@ -16,10 +16,12 @@ More details on [Azure Verified Modules (AVM)](https://azure.github.io/Azure-Ver
 
 ## Useful Labs to Learn
 
+For more details on how to use Terraform and Bicep with Azure, you can check the following labs:  
+
 - [AVM - Terraform Lab](https://learn.microsoft.com/en-us/samples/azure-samples/avm-terraform-labs/avm-terraform-labs?wt.mc_id=DT-MVP-5004771)  
 - [AVM - Bicep Lab](https://learn.microsoft.com/en-us/samples/azure-samples/avm-bicep-labs/avm-bicep-labs?wt.mc_id=DT-MVP-5004771)  
 
-## Demo Template Usage
+## This Template Usage
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
