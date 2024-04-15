@@ -18,7 +18,7 @@ module "storage_account" {
   resource_group_name               = azurerm_resource_group.rg.name
   account_replication_type          = "ZRS"
   access_tier                       = "Hot"
-  account_kind                      = "BlobStorage"
+  account_kind                      = "StorageV2"
   account_tier                      = "Standard"
   location                          = "uksouth"
   infrastructure_encryption_enabled = true
