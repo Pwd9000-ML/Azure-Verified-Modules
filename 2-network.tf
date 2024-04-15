@@ -3,8 +3,8 @@
 locals {
   subnet_names = ["common", "data", "compute", "web"]
   subnets = {
-    for each in local.subnet_names : "subnet${each}" => {
-      address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, each)]
+    for i in range(length(local.subnet_names)) : "subnet${element(local.subnet_names, i)}" => {
+      address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, i)]
     }
   }
   virtual_network_address_space = "10.4.0.0/24"
@@ -23,21 +23,22 @@ module "vnet" {
   virtual_network_address_space = ["10.4.0.0/24"]
 }
 
-# Create Private DNS Zone for privatelink - Storage and keyvault
+# Create Private DNS Zone for privatelink - Storage and keyvault (Add more to "For_each" if needed)
 module "private_dns_zones" {
   for_each = toset("privatelink.blob.core.windows.net", "privatelink.vault.azure.net")
 
-  source                = "Azure/avm-res-network-privatednszone/azurerm"
+  source  = "Azure/avm-res-network-privatednszone/azurerm"
   version = "0.1.1"
 
-  enable_telemetry      = true
-  resource_group_name   = azurerm_resource_group.rg.name
-  domain_name           = each.key
+  enable_telemetry    = true
+  resource_group_name = azurerm_resource_group.rg.name
+  domain_name         = each.key
   virtual_network_links = {
     vnetlinks = {
       vnetlinkname     = "vnetlink-${each.key}"
       vnetid           = module.vnet.virtual_network_id
       autoregistration = true
-      tags = {}
+      tags             = {}
     }
+  }
 }
