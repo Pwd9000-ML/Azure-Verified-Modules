@@ -25,7 +25,7 @@ module "vnet" {
 
 # Create Private DNS Zone for privatelink - Storage and keyvault (Add more to "For_each" if needed)
 module "private_dns_zones" {
-  for_each = toset("privatelink.blob.core.windows.net", "privatelink.vault.azure.net")
+  for_each = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
 
   source  = "Azure/avm-res-network-privatednszone/azurerm"
   version = "0.1.1"
