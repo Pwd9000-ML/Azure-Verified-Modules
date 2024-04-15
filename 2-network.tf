@@ -4,7 +4,7 @@ locals {
   subnet_names = ["common", "data", "compute", "web"]
   subnets = {
     for each in local.subnet_names : "subnet${each}" => {
-      address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, i)]
+      address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, each)]
     }
   }
   virtual_network_address_space = "10.4.0.0/24"
