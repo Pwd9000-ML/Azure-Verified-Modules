@@ -29,52 +29,52 @@ module "storage_account" {
       name                  = "blob-container-1"
       container_access_type = "private"
     }
+  }
 
-    # managed identities (optional)
-    managed_identities = {
-      system_assigned = true
-      #user_assigned_resource_ids = [azurerm_user_assigned_identity.example_identity.id]
-    }
+  # managed identities (optional)
+  managed_identities = {
+    system_assigned = true
+    #user_assigned_resource_ids = [azurerm_user_assigned_identity.example_identity.id]
+  }
 
-    # customer managed key (optional)
-    customer_managed_key = { #customer managed key (optional)
-      #key_vault_resource_id              = module.avm_res_keyvault_vault.resource.id
-      #key_name                           = azurerm_key_vault_key.example.name
-      #user_assigned_identity_resource_id = azurerm_user_assigned_identity.example_identity.id
-    }
+  # customer managed key (optional)
+  customer_managed_key = { #customer managed key (optional)
+    #key_vault_resource_id              = module.avm_res_keyvault_vault.resource.id
+    #key_name                           = azurerm_key_vault_key.example.name
+    #user_assigned_identity_resource_id = azurerm_user_assigned_identity.example_identity.id
+  }
 
-    # private endpoints (optional)
-    private_endpoints = {
-      # the name must be set to avoid conflicting resources.
-      name                          = "avm-demo-blob-pe-${random_integer.number.result}"
-      subnet_resource_id            = module.vnet.subnets["common"].id
-      subresource_name              = ["blob"]
-      private_dns_zone_resource_ids = [module.private_dns_zones["privatelink.blob.core.windows.net"]]
+  # private endpoints (optional)
+  private_endpoints = {
+    # the name must be set to avoid conflicting resources.
+    name                          = "avm-demo-blob-pe-${random_integer.number.result}"
+    subnet_resource_id            = module.vnet.subnets["common"].id
+    subresource_name              = ["blob"]
+    private_dns_zone_resource_ids = [module.private_dns_zones["privatelink.blob.core.windows.net"]]
 
-      # these are optional but illustrate making well-aligned service connection & NIC names.
-      private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
-      network_interface_name          = "avm-demo-blob-pe-nic-${random_integer.number.result}"
-      inherit_tags                    = false
-      inherit_lock                    = false
-      tags                            = {}
-      role_assignments = {
-        role_assignment_1 = {
-          role_definition_id_or_name = "Owner"
-          principal_id               = data.azurerm_client_config.current.object_id
-        }
-      }
-    }
-
-    # role assignments (optional)
+    # these are optional but illustrate making well-aligned service connection & NIC names.
+    private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
+    network_interface_name          = "avm-demo-blob-pe-nic-${random_integer.number.result}"
+    inherit_tags                    = false
+    inherit_lock                    = false
+    tags                            = {}
     role_assignments = {
       role_assignment_1 = {
-        role_definition_id_or_name       = "Storage Blob Data Reader"
-        principal_id                     = data.azurerm_client_config.current.object_id
-        skip_service_principal_aad_check = false
-      },
+        role_definition_id_or_name = "Owner"
+        principal_id               = data.azurerm_client_config.current.object_id
+      }
     }
-
-    # tags (optional)
-    tags = {}
   }
+
+  # role assignments (optional)
+  role_assignments = {
+    role_assignment_1 = {
+      role_definition_id_or_name       = "Storage Blob Data Reader"
+      principal_id                     = data.azurerm_client_config.current.object_id
+      skip_service_principal_aad_check = false
+    },
+  }
+
+  # tags (optional)
+  tags = {}
 }
