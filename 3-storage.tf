@@ -1,13 +1,8 @@
 # Commonalities accross Azure verified modules are things such as (These can be created as part of the module and assigned to the resource):
 # - managed identities 
-# - customer managed keys 
 # - private endpoints
 # - role assignments
 # Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-storage-storageaccount/azurerm/latest
-
-locals {
-  endpoints = toset(["blob"])
-}
 
 module "storage_account" {
   source  = "Azure/avm-res-storage-storageaccount/azurerm"
@@ -43,19 +38,16 @@ module "storage_account" {
 
   # private endpoints (optional)
   private_endpoints = {
-    for endpoint in local.endpoints :
-    endpoint => {
+    blob = {
       # the name must be set to avoid conflicting resources.
       name                          = "avm-demo-blob-pe-${random_integer.number.result}"
       subnet_resource_id            = module.vnet.subnets["common"].id
-      subresource_name              = [endpoint]
+      subresource_name              = ["blob"]
       private_dns_zone_resource_ids = [azurerm_private_dns_zone.privatelink["privatelink.blob.core.windows.net"].id]
 
       # these are optional but illustrate making well-aligned service connection & NIC names.
       private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
       network_interface_name          = "avm-demo-blob-pe-nic-${random_integer.number.result}"
-      inherit_tags                    = false
-      inherit_lock                    = false
       role_assignments = {
         role_assignment_pe = {
           role_definition_id_or_name = "Contributor"
