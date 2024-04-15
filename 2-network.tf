@@ -3,7 +3,7 @@
 locals {
   subnet_names = ["common", "data", "compute", "web"]
   subnets = {
-    for i in range(length(local.subnet_names)) : "subnet${element(local.subnet_names, i)}" => {
+    for i in range(length(local.subnet_names)) : "${element(local.subnet_names, i)}" => {
       address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, i)]
     }
   }
@@ -37,7 +37,7 @@ module "private_dns_zones" {
     vnetlinks = {
       vnetlinkname     = "vnetlink-${each.key}"
       vnetid           = module.vnet.virtual_network_id
-      autoregistration = true
+      autoregistration = false
       tags             = {}
     }
   }
