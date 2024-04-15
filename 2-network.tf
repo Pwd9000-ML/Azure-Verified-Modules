@@ -38,22 +38,3 @@ resource "azurerm_private_dns_zone_virtual_network_link" "privatelink" {
   virtual_network_id    = module.vnet.virtual_network_id
   registration_enabled  = false
 }
-
-# module "private_dns_zones" {
-#   for_each = toset(["privatelink.blob.core.windows.net", "privatelink.vault.azure.net"])
-
-#   source  = "Azure/avm-res-network-privatednszone/azurerm"
-#   version = "0.1.1"
-
-#   enable_telemetry    = true
-#   resource_group_name = azurerm_resource_group.rg.name
-#   domain_name         = each.key
-#   virtual_network_links = {
-#     vnetlinks = {
-#       vnetlinkname     = "vnetlink-${each.key}"
-#       vnetid           = module.vnet.virtual_network_id
-#       autoregistration = false
-#       tags             = {}
-#     }
-#   }
-# }

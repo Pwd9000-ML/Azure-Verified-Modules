@@ -5,6 +5,10 @@
 # - role assignments
 # Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-storage-storageaccount/azurerm/latest
 
+locals {
+  endpoints = toset(["blob"])
+}
+
 module "storage_account" {
   source  = "Azure/avm-res-storage-storageaccount/azurerm"
   version = "0.1.1"
@@ -41,7 +45,7 @@ module "storage_account" {
   private_endpoints = {
     name                          = "avm-demo-blob-pe-${random_integer.number.result}"
     subnet_resource_id            = module.vnet.subnets["common"].id
-    subresource_name              = { name = "blob" }
+    subresource_name              = "blob"
     private_dns_zone_resource_ids = [azurerm_private_dns_zone.privatelink["privatelink.blob.core.windows.net"].id]
 
     # these are optional but illustrate making well-aligned service connection & NIC names.
@@ -57,3 +61,41 @@ module "storage_account" {
     },
   }
 }
+
+# locals {
+#   endpoints = toset(["blob"])
+# }
+
+# for endpoint in local.endpoints :
+#     endpoint => {xxxxx}
+
+#  private_endpoints = {
+#     for endpoint in local.endpoints :
+#     endpoint => {
+#       # the name must be set to avoid conflicting resources.
+#       name                          = "pe-${endpoint}-${module.naming.storage_account.name_unique}"
+#       subnet_resource_id            = azurerm_subnet.private.id
+#       subresource_name              = [endpoint]
+#       private_dns_zone_resource_ids = [azurerm_private_dns_zone.this[endpoint].id]
+#       # these are optional but illustrate making well-aligned service connection & NIC names.
+#       private_service_connection_name = "psc-${endpoint}-${module.naming.storage_account.name_unique}"
+#       network_interface_name          = "nic-pe-${endpoint}-${module.naming.storage_account.name_unique}"
+#       inherit_tags                    = false
+#       inherit_lock                    = false
+
+#       tags = {
+#         env   = "Prod"
+#         owner = "Matt "
+#         dept  = "IT"
+#       }
+
+#       role_assignments = {
+#         role_assignment_1 = {
+#           role_definition_id_or_name = data.azurerm_role_definition.example.id
+#           principal_id               = data.azurerm_client_config.current.object_id
+#         }
+#       }
+#     }
+
+
+#   }
