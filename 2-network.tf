@@ -1,6 +1,9 @@
+
+# Locals block to define the subnet names carve /24 address space into 4 subnets of equal size. (subnets: common, data, compute and web)
 locals {
+  subnet_names = ["common", "data", "compute", "web"]
   subnets = {
-    for i in range(4) : "subnet${i}" => {
+    for each in local.subnet_names : "subnet${each}" => {
       address_prefixes = [cidrsubnet(local.virtual_network_address_space, 2, i)]
     }
   }
