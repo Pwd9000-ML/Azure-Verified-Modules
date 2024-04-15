@@ -49,7 +49,7 @@ module "storage_account" {
       name                          = "avm-demo-blob-pe-${random_integer.number.result}"
       subnet_resource_id            = module.vnet.subnets["common"].id
       subresource_name              = ["blob"]
-      private_dns_zone_resource_ids = [module.private_dns_zones["privatelink.blob.core.windows.net"].id]
+      private_dns_zone_resource_ids = [module.private_dns_zones["privatelink.blob.core.windows.net"]]
 
       # these are optional but illustrate making well-aligned service connection & NIC names.
       private_service_connection_name = "avm-demo-blob-pe-sc-${random_integer.number.result}"
