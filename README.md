@@ -1,5 +1,14 @@
 # Azure-Verified-Modules
-Global Azure 2024 - Azure Verified Modules (AVM) - Demo
+
+Microsoft Azure Verified Modules (AVM) are a curated set of infrastructure-as-code (IaC) modules that are compliant with the Azure Well-Architected Framework and have been tested and verified by Microsoft. These modules are designed to help you build secure, scalable, and resilient cloud environments on Azure.  
+
+This repository contains the source code for the Azure Verified Modules (AVM) that are available in the Terraform Registry as part of a demo @ [Global Azure 2024](https://globalazure.net/)  
+
+Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
+Blog Post (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
+Slides (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
+
+![image](./assets/GlobalAzure2024-500.png)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
