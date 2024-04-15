@@ -8,7 +8,18 @@ Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com
 Blog Post (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
 Slides (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
 
-![image](./assets/GlobalAzure2024-500.png)
+![image](./assets/GlobalAzure2024-500.png)  
+
+## More details on Azure Verified Modules (AVM)
+
+More details on [Azure Verified Modules (AVM)](https://azure.github.io/Azure-Verified-Modules?wt.mc_id=DT-MVP-5004771)  
+
+## Useful Labs to Learn
+
+- [AVM - Terraform Lab](https://learn.microsoft.com/en-us/samples/azure-samples/avm-terraform-labs/avm-terraform-labs?wt.mc_id=DT-MVP-5004771)  
+- [AVM - Bicep Lab](https://learn.microsoft.com/en-us/samples/azure-samples/avm-bicep-labs/avm-bicep-labs?wt.mc_id=DT-MVP-5004771)  
+
+## Demo Template Usage
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
