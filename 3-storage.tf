@@ -41,7 +41,7 @@ module "storage_account" {
   private_endpoints = {
     name                          = "avm-demo-blob-pe-${random_integer.number.result}"
     subnet_resource_id            = module.vnet.subnets["common"].id
-    subresource_name              = ["blob"]
+    subresource_name              = { name = "blob" }
     private_dns_zone_resource_ids = [azurerm_private_dns_zone.privatelink["privatelink.blob.core.windows.net"].id]
 
     # these are optional but illustrate making well-aligned service connection & NIC names.
