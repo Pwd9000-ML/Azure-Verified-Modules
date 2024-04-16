@@ -1,0 +1,46 @@
+name: "Destroy"
+on:
+  workflow_dispatch:
+
+jobs:
+  Plan_Destroy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+
+      - name: TF Plan Destroy
+        uses: Pwd9000-ML/terraform-azurerm-plan@v1.2.6
+        with:
+          path: "."
+          plan_mode: "destroy"
+          tf_version: "latest"
+          tf_vars_file: default.auto.tfvars
+          tf_key: global-azure-2024-avm
+          enable_TFSEC: true
+          az_resource_group: Terraform-GitHub-Backend
+          az_storage_acc: tfgithubbackendsa
+          az_container_name: global-azure-2024-demo
+          arm_client_id: ${{ secrets.ARM_CLIENT_ID }}
+          arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
+          arm_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  Apply_Destroy:
+    needs: Plan_Destroy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dev TF Destroy
+        uses: Pwd9000-ML/terraform-azurerm-apply@v1.2.6
+        with:
+          plan_mode: "destroy"
+          tf_version: "latest"
+          tf_key: global-azure-2024-avm
+          az_resource_group: Terraform-GitHub-Backend
+          az_storage_acc: tfgithubbackendsa
+          az_container_name: global-azure-2024-demo
+          arm_client_id: ${{ secrets.ARM_CLIENT_ID }}
+          arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
+          arm_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}
