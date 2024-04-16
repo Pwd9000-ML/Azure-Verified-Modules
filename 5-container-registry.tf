@@ -4,7 +4,7 @@
 # - role assignments
 # Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-containerregistry-registry/azurerm/latest
 
-module "keyvault" {
+module "container_registry" {
   source  = "Azure/avm-res-containerregistry-registry/azurerm"
   version = "0.1.0"
 
