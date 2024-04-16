@@ -11,7 +11,7 @@ module "container_registry" {
   name                          = "avm-demo-acr-${random_integer.number.result}"
   enable_telemetry              = true
   location                      = "uksouth"
-  sku                           = "premium"
+  sku                           = "Premium"
   resource_group_name           = azurerm_resource_group.rg.name
   public_network_access_enabled = true
 
