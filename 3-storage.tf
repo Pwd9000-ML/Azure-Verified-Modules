@@ -17,6 +17,10 @@ module "storage_account" {
   account_tier                      = "Standard"
   location                          = "uksouth"
   infrastructure_encryption_enabled = true
+  network_rules = {
+    bypass         = ["AzureServices"]
+    default_action = "Deny"
+  }
 
   # Container (optional)
   containers = {
