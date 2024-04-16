@@ -2,7 +2,7 @@
 # - managed identities 
 # - private endpoints
 # - role assignments
-# Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-storage-storageaccount/azurerm/latest
+# Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-keyvault-vault/azurerm/latest
 
 module "keyvault" {
   source  = "Azure/avm-res-keyvault-vault/azurerm"
