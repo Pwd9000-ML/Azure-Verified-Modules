@@ -8,7 +8,7 @@ module "container_registry" {
   source  = "Azure/avm-res-containerregistry-registry/azurerm"
   version = "0.1.0"
 
-  name                          = "avm-demo-acr-${random_integer.number.result}"
+  name                          = "avmdemoacr${random_integer.number.result}"
   enable_telemetry              = true
   location                      = "uksouth"
   sku                           = "Premium"
