@@ -1,14 +1,14 @@
-# Azure-Verified-Modules
+# Azure-Verified-Modules - Terraform
 
 Microsoft Azure Verified Modules (AVM) are a curated set of infrastructure-as-code (IaC) modules that are compliant with the Azure Well-Architected Framework and is actively maintained, tested and verified by Microsoft. These modules are designed to help you build secure, scalable, and resilient cloud environments on Azure.  
 
-This repository contains the source code for the Azure Verified Modules (AVM) that are available in the Terraform Registry as part of a demo at this years **[Global Azure 2024](https://globalazure.net/)** event. It's main purpose is to demonstrate the usage of Azure Verified Modules (AVM) in a Terraform configuration where configuration options are uniform and consistent across multiple modules, in terms of best practices and security.  
+This repository contains the source code for the Azure Verified Modules (AVM) that are available in the **Terraform** Registry as part of a demo at this years **[Global Azure 2024](https://globalazure.net/)** event. It's main purpose is to demonstrate the usage of Azure Verified Modules (AVM) in a Terraform configuration where configuration options are uniform and consistent across multiple modules, in terms of best practices and security.  
 
 Implantation of uniform and consistent configuration options across multiple modules is a key feature of Azure Verified Modules (AVM). This is achieved by having the same configuration options across all modules in the same pattern and features, which makes it easier to use and understand the modules and attain a consistent configuration across all modules. For example **private endpoints**, **diagnostics settings**, **identity**, **role-based access control (RBAC)**, and more.  
 
-Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
-Blog Post: [(COMING SOON)](xxxxxx)  
-Slides: [Azure Verified Modules (AVM) - Global Azure 2024 Slides](https://github.com/Pwd9000-ML/Azure-Verified-Modules/tree/master/assets)  
+**Microsoft London Reactor Meetup Link:** [Global Azure 2024 - Reactor Meetup](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
+**Slides:** [Azure Verified Modules (AVM) - Global Azure 2024 Slides](https://github.com/Pwd9000-ML/Azure-Verified-Modules/tree/master/assets)  
+**Blog:** [(COMING SOON)](xxxxxx)  
 
 ![image](./assets/GlobalAzure2024-500.png)  
 
