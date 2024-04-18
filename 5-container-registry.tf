@@ -1,8 +1,13 @@
-# Commonalities accross Azure verified modules are things such as (These can be created as part of the module and assigned to the resource):
-# - managed identities 
-# - private endpoints
-# - role assignments
-# Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-containerregistry-registry/azurerm/latest
+# Commonalities accross Azure verified modules (interfaces):
+# - Diagnostic Settings
+# - Role Assignments
+# - Resource Locks
+# - Tags
+# - Managed Identities
+# - Private Endpoints
+# - Customer Managed Keys
+# - Azure Monitor Alerts
+# Defaults if not specified will always be set as per MS recommended best and secure practices, see the module documentation for more details: https://registry.terraform.io/modules/Azure/avm-res-storage-storageaccount/azurerm/latest
 
 module "container_registry" {
   source  = "Azure/avm-res-containerregistry-registry/azurerm"
