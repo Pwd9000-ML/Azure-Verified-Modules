@@ -7,8 +7,8 @@ This repository contains the source code for the Azure Verified Modules (AVM) th
 Implantation of uniform and consistent configuration options across multiple modules is a key feature of Azure Verified Modules (AVM). This is achieved by having the same configuration options across all modules in the same pattern and features, which makes it easier to use and understand the modules and attain a consistent configuration across all modules. For example **private endpoints**, **diagnostics settings**, **identity**, **role-based access control (RBAC)**, and more.  
 
 Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
-Blog Post (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
-Slides: [Azure Verified Modules (AVM)](https://github.com/Pwd9000-ML/Azure-Verified-Modules/tree/master/assets)  
+Blog Post: [(COMING SOON)](xxxxxx)  
+Slides: [Azure Verified Modules (AVM) - Global Azure 2024 Slides](https://github.com/Pwd9000-ML/Azure-Verified-Modules/tree/master/assets)  
 
 ![image](./assets/GlobalAzure2024-500.png)  
 
