@@ -8,7 +8,7 @@ Implantation of uniform and consistent configuration options across multiple mod
 
 Microsoft London Reactor Meetup Link: [Global Azure 2024](https://www.meetup.com/microsoft-reactor-london/events/300367821/)  
 Blog Post (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
-Slides (COMING SOON): [Azure Verified Modules (AVM)](xxxxxx)  
+Slides: [Azure Verified Modules (AVM)](https://github.com/Pwd9000-ML/Azure-Verified-Modules/tree/master/assets)  
 
 ![image](./assets/GlobalAzure2024-500.png)  
 
