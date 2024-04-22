@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.2
+        uses: actions/checkout@v4.1.3
 
       - name: Plan-Apply
         uses: Pwd9000-ML/terraform-azurerm-tests@v1.0.6
@@ -35,7 +35,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.2
+        uses: actions/checkout@v4.1.3
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
