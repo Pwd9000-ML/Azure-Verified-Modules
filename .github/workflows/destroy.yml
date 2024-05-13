@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dev TF Destroy
-        uses: Pwd9000-ML/terraform-azurerm-apply@v1.2.6
+        uses: Pwd9000-ML/terraform-azurerm-apply@v1.3.0
         with:
           plan_mode: "destroy"
           tf_version: "latest"
