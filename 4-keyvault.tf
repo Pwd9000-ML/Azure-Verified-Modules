@@ -11,7 +11,7 @@
 
 module "keyvault" {
   source  = "Azure/avm-res-keyvault-vault/azurerm"
-  version = "0.5.3"
+  version = "0.6.0"
 
   name                          = "avm-demo-kv-${random_integer.number.result}"
   enable_telemetry              = true
