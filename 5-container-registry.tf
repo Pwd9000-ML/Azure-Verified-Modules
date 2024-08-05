@@ -11,7 +11,7 @@
 
 module "container_registry" {
   source  = "Azure/avm-res-containerregistry-registry/azurerm"
-  version = "0.1.0"
+  version = "0.2.0"
 
   name                          = "avmdemoacr${random_integer.number.result}"
   enable_telemetry              = true
