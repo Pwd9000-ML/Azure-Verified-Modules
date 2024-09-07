@@ -11,7 +11,7 @@
 
 module "storage_account" {
   source  = "Azure/avm-res-storage-storageaccount/azurerm"
-  version = "0.1.1"
+  version = "0.2.5"
 
   name                              = "avmdemosa${random_integer.number.result}"
   enable_telemetry                  = true
