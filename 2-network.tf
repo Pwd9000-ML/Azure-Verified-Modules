@@ -13,7 +13,7 @@ locals {
 # Creating a virtual network with a unique name, telemetry settings, and in the specified resource group and location.
 module "vnet" {
   source  = "Azure/avm-res-network-virtualnetwork/azurerm"
-  version = "0.4.0"
+  version = "0.4.2"
 
   name                          = "avm-demo-vnet-${random_integer.number.result}"
   enable_telemetry              = true
